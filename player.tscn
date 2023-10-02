@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bfxnapbm6oiy3"]
+
+[ext_resource type="Script" path="res://top_down_movement_velocity_input.gd" id="1_e8wnp"]
+[ext_resource type="Resource" uid="uid://bb0xw4x8t1jjj" path="res://character_movement_stats.tres" id="2_x7pt1"]
+[ext_resource type="Script" path="res://top_down_movement.gd" id="3_irvaa"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u73q0"]
+radius = 8.0
+
+[node name="Player" type="CharacterBody2D"]
+wall_min_slide_angle = 0.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_u73q0")
+
+[node name="TopDownMovementVelocityInput" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("1_e8wnp")
+actor = NodePath("..")
+top_down_movement_stats = ExtResource("2_x7pt1")
+
+[node name="TopDownMovement" type="Node" parent="." node_paths=PackedStringArray("actor")]
+script = ExtResource("3_irvaa")
+actor = NodePath("..")
